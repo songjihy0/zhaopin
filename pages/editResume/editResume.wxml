@@ -1,0 +1,194 @@
+<view>
+    <!-- <view class='pc-msg' bindtap='toScanCode' hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view-2">
+		<view class='iconfont icon-jianli'></view>
+		<text>用电脑编辑简历,体验更好更流畅</text>
+		<view class='iconfont icon-right'></view>
+	</view> -->
+    <view class="box box-top _relative r-content" data-target='s0' bindtap='navigateTo' data-url='../userInfo/userInfo'>
+        <view class='ripple' style='{{ripple.s0}}'></view>
+        <view class="title">
+            <view class="placeicon-1"></view>
+            <text>基本信息</text>
+        </view>
+        <view>
+            <view class='item'>
+                <text>姓</text>
+                <text style="margin-left:26px;">名 :</text>
+                <text> {{userInfo.name}}</text>
+            </view>
+            <view class='item'>
+                <text>性</text>
+                <text style="margin-left:26px;">别 :</text>
+                <text wx:if='{{userInfo.sex}}'> {{userInfo.sex}}</text>
+            </view>
+            <view class='item'>
+                <text>最高学历 :</text>
+                <text> {{userInfo.degree}}</text>
+            </view>
+            <view class='item'>
+                <text>所在城市 :</text>
+                <text> {{userInfo.city}}</text>
+            </view>
+            <view class='item'>
+                <text>联系电话 :</text>
+                <text> {{userInfo.telephone}}</text>
+            </view>
+            <view class='item'>
+                <text>电子邮箱 :</text>
+                <text> {{userInfo.email}}</text>
+            </view>
+            <view class='item'>
+                <text>出生日期 :</text>
+                <text> {{userInfo.birthday}}</text>
+            </view>
+            <view class='imgbox'>
+                <image mode="aspectFit" src="{{userInfo.avatarUrl || userInfoFromWX.avatarUrl || '../../images/avatar.png'}}" class="img"></image>
+            </view>
+        </view>
+    </view>
+    <!-- <view>
+		<view class="box" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view">
+			<view class="title">
+				<view class="placeicon-1"></view>
+				<text>个人技能</text>
+			</view>
+			<view class="item" wx:for="{{resume.skills}}">
+				
+			</view>
+		</view>
+		<view class="add" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view">
+			<view class="_inline-block iconfont icon-add"></view>
+			<text>新增</text>
+		</view>
+	</view> -->
+    <view>
+        <view class="box r-content {{resume.educations.length==0?box-top:datebox}}" bindtap="gotoPage" data-flag='true' data-url='education/education' data-target='s1'>
+            <view class='ripple' style='{{ripple.s1}}'></view>
+            <view class="title">
+                <view class="placeicon-1"></view>
+                <text>教育经历</text>
+            </view>
+            <view wx:if="{{resume.educations.length>0}}" style="margin-top:15px;margin-left:15px;">
+                <view class="item dateItem" wx:for="{{resume.educations}}">
+                    <view class="dateTop">{{item.graduation_year}}年毕业</view>
+                    <view class="text-2">{{item.school}}</view>
+                    <view class="text-3">{{item.degree}}~{{item.major}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="add r-content" data-target='s12' wx:if="{{resume.educations.length==0}}" bindtap='gotoPage' data-flag='false' data-url='education/editEducation/editEducation'>
+            <view class="_inline-block iconfont icon-add"></view>
+            <text>新增</text>
+            <view class='ripple' style='{{ripple.s12}}'></view>
+        </view>
+    </view>
+    <view>
+        <view class="box r-content {{resume.interships.length==0?box-top:datebox}}" bindtap='gotoPage' data-flag='true' data-url='intership/intership' data-target='s2'>
+            <view class='ripple' style='{{ripple.s2}}'></view>
+            <view class="title">
+                <view class="placeicon-1"></view>
+                <text>实习经验</text>
+            </view>
+            <view wx:if="{{resume.interships.length>0}}" style="margin-top:15px;margin-left:15px;">
+                <view class="item dateItem" wx:for="{{resume.interships}}">
+                    <view class="dateTop">{{item.start_date}}-{{item.end_date}}</view>
+                    <view class="text-2">{{item.company}}~{{item.job}}</view>
+                    <view class="text-3" wx:if='{{item.description}}'>{{item.description}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="add r-content" data-target='s3' wx:if="{{resume.interships.length==0}}" data-flag='false' bindtap='gotoPage' data-url='intership/editIntership/editIntership'>
+            <view class="_inline-block iconfont icon-add"></view>
+            <text>新增</text>
+            <view class='ripple' style='{{ripple.s3}}'></view>
+        </view>
+    </view>
+    <view>
+        <view class="box {{resume.projects.length==0?box-top:datebox}} r-content" data-target='s4' bindtap='gotoPage' data-flag='true' data-url='project/project'>
+            <view class='ripple' style='{{ripple.s4}}'></view>
+            <view class="title">
+                <view class="placeicon-1"></view>
+                <text>项目经验</text>
+            </view>
+            <view wx:if="{{resume.projects.length>0}}" style="margin-top:15px;margin-left:15px;">
+                <view class="item dateItem" wx:for="{{resume.projects}}">
+                    <view class="dateTop">{{item.start_date}}-{{item.end_date}}</view>
+                    <view class="text-2">[项目名称] {{item.name}}</view>
+                    <view class="text-2">[项目职责] {{item.duty}}</view>
+                    <view class="text-3" wx:if='{{item.description}}'>{{item.description}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="add r-content" data-target='s5' wx:if="{{resume.projects.length==0}}" data-flag='false' bindtap='gotoPage' data-url='project/editProject/editProject'>
+            <view class="_inline-block iconfont icon-add"></view>
+            <text>新增</text>
+            <view class='ripple' style='{{ripple.s5}}'></view>
+        </view>
+    </view>
+    <view>
+        <view class="box {{resume.honors.length==0?box-top:datebox}} r-content" data-target='s6' bindtap='gotoPage' data-flag='true' data-url='honor/honor'>
+            <view class='ripple' style='{{ripple.s6}}'></view>
+            <view class="title">
+                <view class="placeicon-1"></view>
+                <text>荣誉奖项</text>
+            </view>
+            <view wx:if="{{resume.honors.length>0}}" style="margin-top:15px;margin-left:15px;">
+                <view class="item dateItem" wx:for="{{resume.honors}}">
+                    <view class="dateTop">{{item.date}}</view>
+                    <view class="text-2">{{item.prize}}</view>
+                    <view class="text-3">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="add r-content" data-target='s7' wx:if="{{resume.honors.length==0}}" data-flag='false' bindtap='gotoPage' data-url='honor/editHonor/editHonor'>
+            <view class="_inline-block iconfont icon-add"></view>
+            <text>新增</text>
+            <view class='ripple' style='{{ripple.s7}}'></view>
+        </view>
+    </view>
+    <view class="box r-content" data-target='s8' data-msg='{{resume.selfAssessment}}' bindtap='toSelfAssessment'>
+        <view class='ripple' style='{{ripple.s8}}'></view>
+        <view class="title">
+            <view class="placeicon-1"></view>
+            <text>自我评价</text>
+        </view>
+        <view wx:if='{{resume.selfAssessment}}'>
+            <view class="item">
+                <view class="text-4">{{resume.selfAssessment}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="add r-content" data-target='s9' wx:if='{{!resume.selfAssessment}}' data-msg='' bindtap='toSelfAssessment'>
+        <view class='ripple' style='{{ripple.s9}}'></view>
+        <view class="_inline-block iconfont icon-add"></view>
+        <text>新增</text>
+    </view>
+    <view class="box r-content" data-target='s10' bindtap='toHope'>
+        <view class='ripple' style='{{ripple.s10}}'></view>
+        <view class="title">
+            <view class="placeicon-1"></view>
+            <text>求职意向</text>
+        </view>
+        <view wx:if='{{resume.hope.job}}'>
+            <view class="item">
+                <view class="text-2">{{resume.hope.job}}</view>
+                <view class="text-2" style="font-size:13px; margin-top:4px;">{{resume.hope.type}}~{{resume.hope.city}}~{{resume.hope.salary}}</view>
+                <view class="text-3" wx:if='{{resume.hope.otherDescription}}'>{{resume.hope.otherDescription}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="add r-content" data-target='s11' wx:if='{{!resume.hope.job}}' bindtap='toHope'>
+        <view class="_inline-block iconfont icon-add"></view>
+        <text>新增</text>
+        <view class='ripple' style='{{ripple.s11}}'></view>
+    </view>
+    <!-- <view class="handle">
+        <view class="handle-btn preview" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view">
+            <view class="_inline-block iconfont icon-preview"></view>
+            <text>预览</text>
+        </view>
+    </view>
+    <view class='box footer'></view> -->
+</view>
+<include src='../../common/loader.wxml' />
+<include src='../../common/toast.wxml' />

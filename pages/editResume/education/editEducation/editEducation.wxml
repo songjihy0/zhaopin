@@ -1,0 +1,44 @@
+<view class="box" style='margin-top:15px;'>
+    <view class="item _flex _relative">
+        <view class="iconfont icon-circle-edit"></view>
+        <input class="input" value="{{education.school}}" placeholder="学校" placeholder-class="placeholder-class" bindinput='input' data-key='school' bindfocus='focus' bindblur='blur' />
+        <icon type='warn' class='icon-warn' size='20' hidden='{{check.school}}'></icon>
+        <view class='animated fadeInUp msg-fill' wx:if='{{hint.school.length>0}}' hidden='{{!focus.school}}'>
+            <view style='max-height: 230px;overflow-y: auto; overflow-x: hidden;'>
+                <view wx:for='{{hint.school}}' class='one-line-text animated lightSpeedIn' hover='true' hover-start-time="10" hover-stay-time="300" hover-class="click-view" style='animation-delay:{{index*0.2}}s;-webkit-animation-delay:{{index*0.2}}s;' bindtap='setInput' data-key='school' data-index='{{index}}'>
+                    {{item}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="item _flex _relative">
+        <view class="iconfont icon-circle-edit"></view>
+        <input class="input" value="{{education.major}}" placeholder="专业" placeholder-class="placeholder-class" bindinput='input' data-key='major' bindfocus='focus' bindblur='blur' data-input='school' />
+        <icon type='warn' class='icon-warn' size='20' hidden='{{check.major}}'></icon>
+        <view class='msg-fill animated fadeInUp' wx:if='{{hint.major.length>0}}' hidden='{{!focus.major}}'>
+            <view style='max-height: 230px;overflow-y: auto; overflow-x: hidden;'>
+                <view wx:for='{{hint.major}}' class='one-line-text animated lightSpeedIn' hover='true' hover-start-time="10" hover-stay-time="300" hover-class="click-view" style='animation-delay:{{index*0.2}}s;-webkit-animation-delay:{{index*0.2}}s;' bindtap='setInput' data-key='major' data-index='{{index}}'>
+                    {{item}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <picker bindchange="bindYearPickerChange" value="{{yearIndex}}" range="{{years}}">
+        <view class="item _flex _relative" style="margin-top:20px">
+            <view class="iconfont icon-circle-edit"></view>
+            <view class="input" wx:if="{{education.graduation_year}}">{{education.graduation_year}}年毕业</view>
+            <view class="input placeholder-class" wx:else>毕业年份</view>
+            <icon type='warn' class='icon-warn' size='20' hidden='{{check.graduation_year}}'></icon>
+        </view>
+    </picker>
+    <picker bindchange="bindDegreePickerChange" value="{{degreeIndex}}" range="{{degrees}}">
+        <view class="item _flex _relative">
+            <view class="iconfont icon-circle-edit"></view>
+            <view class="input" wx:if="{{education.degree}}">{{education.degree}}</view>
+            <view class="input placeholder-class" wx:else>学位</view>
+            <icon type='warn' class='icon-warn' size='20' hidden='{{check.degree}}'></icon>
+        </view>
+    </picker>
+    <button type="primary" class='btn' bindtap="save">保存修改</button>
+    <button type="default" wx:if='{{flag}}' class='btn' style='margin-top:15px; margin-bottom: 15px;' bindtap='delete'>删除此教育经历</button>
+</view>

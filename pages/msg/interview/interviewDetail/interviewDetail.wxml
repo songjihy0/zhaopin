@@ -1,0 +1,96 @@
+<view>
+    <view class='box'>
+        <view style='margin-bottom: 5px;'>
+            <text style='font-weight: 600;color:#000'>{{interviewDetail.job.name}}</text>
+            <text style='font-weight: 600;color:#09bb07; margin-left:5px;'>{{interviewDetail.job.salary_lower}}-{{interviewDetail.job.salary_upper}}k</text>
+        </view>
+        <view>{{interviewDetail.job.company.name}}</view>
+    </view>
+    <view class='box'>
+        <view style='margin-bottom: 10px;'>
+            <text style='color:#888;display: inline-block;width: 62px;'>面试时间:</text>
+            <text>{{interviewDetail.interview_date_time_filter}}</text>
+        </view>
+        <view class='_flex' style='margin-bottom: 10px;'>
+            <view style='color:#888;white-space:nowrap;width: 62px;'>面试地点:</view>
+            <view>{{interviewDetail.i_address || interviewDetail.job.company.address}}</view>
+        </view>
+        <view style='margin-bottom: 10px;'>
+            <text style='color:#888;display: inline-block;width: 62px;'>联系人:</text>
+            <text>{{interviewDetail.job.hr.name}}</text>
+            <text wx:if='{{interviewDetail.job.hr.sex=="男"}}'>先生</text>
+            <text wx:if='{{interviewDetail.job.hr.sex=="女"}}'>小姐</text>
+        </view>
+        <view style='margin-bottom: 10px;'>
+            <text style='color:#888;display: inline-block;width: 62px;'>联系电话:</text>
+            <text>{{interviewDetail.job.hr.telephone}}</text>
+        </view>
+        <view style='margin-bottom: 10px;'>
+            <text style='color:#888;display: inline-block;width: 62px;'>联系邮箱:</text>
+            <text>{{interviewDetail.job.hr.email}}</text>
+        </view>
+        <view class='_flex'>
+            <view style='color:#888;white-space:nowrap;width: 62px;'>备注信息:</view>
+            <text>{{interviewDetail.other}}</text>
+        </view>
+    </view>
+    <view class='box' style="padding:20px 0px">
+        <view class='item-flex' wx:if='{{interviewDetail.interview_date_time_filter}}'>
+            <view class='item-icon item-1'>
+                <view class='iconfont icon-sey-letter-a' style="font-size:22px"></view>
+            </view>
+            <view class='item-con'>
+                <view>邀请你参加面试</view>
+                <view style='margin-top:7px;'>{{interviewDetail.interview_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex' wx:if='{{interviewDetail.interview_flag=="面试结束"}}'>
+            <view class='item-icon'>
+                <view class='iconfont icon-success' style='font-size: 18px'></view>
+            </view>
+            <view class='item-con'>
+                <view>面试结束</view>
+                <view style='margin-top:7px;'>{{interviewDetail.set_interview_end_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex _warn' wx:if='{{interviewDetail.interview_flag=="没有参加"}}'>
+            <view class='item-icon'>
+                <view class='iconfont icon-warn1' style='font-size: 18px'></view>
+            </view>
+            <view class='item-con'>
+                <view>您没有如期参加面试</view>
+                <view style='margin-top:7px;'>{{interviewDetail.set_interview_end_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex' wx:if='{{interviewDetail.result=="通过"}}'>
+            <view class='item-icon'>
+                <view class='iconfont icon-success' style='font-size: 18px'></view>
+            </view>
+            <view class='item-con'>
+                <view>恭喜您,通过了这场面试</view>
+                <view style='margin-top:7px;'>{{interviewDetail.set_result_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex _warn' wx:if='{{interviewDetail.result=="不通过"}}'>
+            <view class='item-icon'>
+                <view class='iconfont icon-warn1' style='font-size: 18px'></view>
+            </view>
+            <view class='item-con'>
+                <view>很遗憾,您没有通过这场面试</view>
+                <view style='margin-top:7px;'>{{interviewDetail.set_result_date_time_filter}}</view>
+            </view>
+        </view>
+    </view>
+    <view wx:if='{{interviewDetail.interview_flag=="面试结束" && !interviewDetail.had_commented}}' class='box-last comment r-content' data-target='s0' bindtap='navigateTo' data-url='comment/comment?id={{interviewDetail.id}}&job_id={{interviewDetail.job_id}}'>
+        <view class='iconfont icon-edit1'>
+            <view class='fixed_ripple'></view>
+        </view>
+        <text>前往评价</text>
+        <view class="ripple" style="{{ripple.s0}}"></view>
+    </view>
+    <view wx:if='{{interviewDetail.had_commented}}' class='disable' style='text-align: center'>
+        <view class='iconfont icon-edit1'></view>
+        <text>已评价</text>
+    </view>
+</view>
+<include src='../../../../common/loader.wxml' />

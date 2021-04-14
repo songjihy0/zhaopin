@@ -1,0 +1,182 @@
+<view>
+    <view class="box">
+        <view class="item-2 line">
+            <view class="title">
+                <text class="jobName">{{jobDetail.name}}</text>
+                <text class="salary">[{{jobDetail.salary_lower}}-{{jobDetail.salary_upper}}k]</text>
+                <text class="status" wx:if='{{!jobDetail.status}}'>[已下线]</text>
+                <icon wx:if="{{star}}" class="icon-star-fill iconfont iconMR0" bindtap="star"></icon>
+                <icon wx:else class="icon-star iconfont iconMR0" bindtap="star"></icon>
+            </view>
+            <view class="icon-text">
+                <view>
+                    <icon class="iconfont icon-place"></icon>
+                    <text>{{jobDetail.city}}</text>
+                </view>
+                <view>
+                    <icon class='iconfont icon-degree'></icon>
+                    <text>{{jobDetail.degree_limit}}</text>
+                </view>
+                <view>
+                    <icon class="iconfont icon-time"></icon>
+                    <text>{{jobDetail.type}}</text>
+                </view>
+            </view>
+            <view class="welfarebox">
+                <view class="welfare">
+                    <text>职位诱惑:</text>
+                </view>
+                <view class="welfareList">
+                    <!-- <text class="" wx:for="{{job.welfare}}" wx:if="{{index!==job.welfare.length-1}}">{{item}},</text> -->
+                    <text>{{jobDetail.welfare}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="item-2 flexbox" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view">
+            <view class="logo">
+                <image src="{{jobDetail.company.logo || '../../images/avatar.png'}}" style="height:120rpx;width:120rpx;" background-size="cover"></image>
+            </view>
+            <view class="companyMsg">
+                <view style="color:#353535;font-size:14px;">{{jobDetail.company.c_name_short}}</view>
+                <text>{{jobDetail.company.field}}/</text>
+                <text>{{jobDetail.company.financing_stage}}/</text>
+                <text>{{jobDetail.company.scale}}</text>
+                <text></text>
+            </view>
+            <icon class="iconfont icon-right iconH iconMR0"></icon>
+        </view>
+    </view>
+    <view class='box'>
+        <view class="item">
+            <view class="item-top">
+                <icon class="iconfont icon-job"></icon>
+                <text>职位描述</text>
+            </view>
+            <view style="margin-bottom:10px;" wx:if='{{jobDetail.jobduty.length>0}}'>
+                <text style='color:#353535'>岗位职责</text>
+            </view>
+            <view wx:for="{{jobDetail.jobduty}}" style="margin-bottom:10px;">
+                <text>{{index+1}}.{{item.description}}</text>
+            </view>
+            <view style="margin-bottom:10px;" wx:if='{{jobDetail.jobskill.length>0}}'>
+                <text style='color:#353535'>职位要求</text>
+            </view>
+            <view wx:for="{{jobDetail.jobskill}}" style="margin-bottom:10px;">
+                <text>{{index+1}}.{{item.description}}</text>
+            </view>
+        </view>
+    </view>
+    <view class='box box-workplace'>
+        <view class="item">
+            <view style="padding:0px 30rpx">
+                <view class="item-top">
+                    <icon class='iconfont icon-place'></icon>
+                    <text>工作地点</text>
+                </view>
+            </view>
+            <view class="flexbox" style="justify-content:space-between" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='openMap'>
+                <view style="flex-grow:1;font-size:12px;">{{jobDetail.workplace}}</view>
+                <view class="iconfont icon-right iconMR0" style="font-size:15px"></view>
+            </view>
+        </view>
+    </view>
+    <view class='box' wx:if='{{jobDetail.campustalk.length>0}}'>
+        <view class="item">
+            <view class='item-top'>
+                <icon class="iconfont icon-careertalk"></icon>
+                <text>宣讲会</text>
+            </view>
+            <view wx:for="{{jobDetail.campustalk}}" style="margin-bottom:10px;" class='_relative'>
+                <view class='icon_circle icon_circle_1 {{jobDetail.campustalk.length-1==index?"icon_no_after":""}}' wx:if='{{item.status=="out_of_date"}}'>
+                </view>
+                <view wx:if='{{item.status=="out_of_date"}}' class='txt txt-1'>{{item.school}}--{{item.date_time}}</view>
+                <view class='icon_circle icon_circle_2 {{jobDetail.campustalk.length-1==index?"icon_no_after":""}}' wx:if='{{item.status=="dead_line"}}'>
+                </view>
+                <view wx:if='{{item.status=="dead_line"}}' class='txt txt-2'>{{item.school}}--{{item.date_time}}</view>
+                <view class='icon_circle icon_circle_3 {{jobDetail.campustalk.length-1==index?"icon_no_after":""}}' wx:if='{{item.status=="after_the_date"}}'>
+                </view>
+                <view wx:if='{{item.status=="after_the_date"}}' class='txt txt-3'>{{item.school}}--{{item.date_time}}</view>
+            </view>
+        </view>
+    </view>
+    <view class='box'>
+        <view class="item">
+            <view class='item-top'>
+                <icon class="iconfont icon-fabuzhe"></icon>
+                <text>职位发布者</text>
+            </view>
+            <view class="flexbox">
+                <view>
+                    <image src="{{jobDetail.hr.avatarUrl || '../../images/avatar.png'}}" style="height:120rpx;width:120rpx;border-radius:60rpx;" background-size="cover"></image>
+                </view>
+                <view class="publisherDetail">
+                    <text class="_block publisherName">{{jobDetail.hr.name}}</text>
+                    <text class="_block">{{jobDetail.hr.job}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='box' wx:if='{{comment.length>0}}'>
+        <view class="item">
+            <view class='item-top' style='margin-bottom: 0px'>
+                <icon class="iconfont icon-edit1"></icon>
+                <text>面试评价</text>
+            </view>
+            <view wx:for='{{comment}}'>
+                <view class='animated fadeInRight' style='{{index!=comment.length-1?"border-bottom: 1rpx solid #eee":""}}'>
+                    <view class='_flex' style='flex-direction: row;padding: 15rpx 0px;'>
+                        <view wx:if='{{item.anonymity}}' style='margin-right: 15rpx;'>
+                            <image background-size="cover" src="../../images/avatar.png" style='height:90rpx;width:90rpx;border-radius: 45rpx;' />
+                        </view>
+                        <view wx:else style='margin-right: 15rpx;'>
+                            <image background-size="cover" src="{{item.seeker.avatarUrl || '../../images/avatar.png'}}" style='height:90rpx;width:90rpx;border-radius: 45rpx;' />
+                        </view>
+                        <view style='flex-grow: 1;height: 90rpx;'>
+                            <view wx:if='{{item.anonymity}}'>
+                                <view style='font-size: 38rpx;color:#353535'>匿名</view>
+                            </view>
+                            <view wx:else>
+                                <view style='font-size: 38rpx;color:#353535'>{{item.seeker.name}}</view>
+                            </view>
+                            <view class='view-text'>
+                                <text>描述符合:</text>
+                                <text class='color-text'>{{item.detail_conform_comment}}</text>
+                                <text>面试官:</text>
+                                <text class='color-text'>{{item.hr_comment}}</text>
+                                <text>公司:</text>
+                                <text class='color-text'>{{item.company_comment}}</text>
+                            </view>
+                        </view>
+                        <view class='top-right' style='font-size:24rpx;color:#b2b2b2'>
+                            {{item.comment_date_time_filter}}
+                        </view>
+                    </view>
+                    <view class='content' style='padding:15rpx 0px 30rpx 0px;'>
+                        {{item.content}}
+                    </view>
+                </view>
+            </view>
+            <button class='loadmore' type='default' wx:if='{{!comment_disable}}' bindtap='loadmore'>
+                查看更多评价
+            </button>
+        </view>
+    </view>
+    <view class='box box-last' style='background: rgb(239,239,244)'>
+    </view>
+    <view class='box box-last box-fixed'>
+        <view class='r-content' data-target='s1' data-flag='fixed' bindtap='judge' wx:if='{{!hadDelivered}}'>
+            <view class="item footer">
+                <icon class="iconfont icon-send flyaway {{sending?'popUp':''}}"></icon>
+                发送简历
+            </view>
+            <view class="ripple" style="{{ripple.s1}}"></view>
+        </view>
+        <view class="item footer disable" wx:if='{{hadDelivered}}'>
+            已投递
+        </view>
+    </view>
+</view>
+<include src='../../common/loader.wxml' />
+
+
+<include src='../../common/toast.wxml' />

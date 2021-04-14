@@ -1,0 +1,84 @@
+Page {
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.box {
+    padding: 0px 30rpx;
+}
+
+.item {
+    height: 36px;
+    border-bottom: 1rpx solid rgb(239, 239, 244);
+}
+
+.iconfont {
+    line-height: 36px;
+    vertical-align: middle;
+    color: rgb(72, 194, 61);
+}
+
+.btn {
+    font-size: 14px;
+    margin-top: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 1px
+}
+
+.input {
+    flex-grow: 1;
+    line-height: 36px;
+    height: 100%;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.msg-fill {
+    position: absolute;
+    top: 45px;
+    border: 1px solid #eee;
+    background: #fff;
+    z-index: 20;
+    left: 20rpx;
+    width: 660rpx;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    padding: 20rpx 0px;
+}
+
+.msg-fill::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-width: 7px;
+    border-color: transparent;
+    border-bottom-color: #fff;
+    position: absolute;
+    left: 44rpx;
+    top: -13px;
+    z-index: 22;
+    border-style: solid;
+}
+
+.msg-fill::after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-width: 7px;
+    border-color: transparent;
+    border-bottom-color: #eee;
+    position: absolute;
+    left: 44rpx;
+    top: -14px;
+    z-index: 21;
+    border-style: solid;
+}
+
+.one-line-text {
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-indent: 20rpx;
+}

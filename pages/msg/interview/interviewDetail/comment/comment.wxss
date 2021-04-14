@@ -1,0 +1,78 @@
+page {
+    background-color: rgb(239, 239, 244);
+    box-sizing: border-box;
+}
+
+view {
+    font-size: 13px;
+    color: #353535;
+}
+
+.box {
+    background: #fff;
+    padding: 15px 30rpx;
+    margin-bottom: 12px;
+}
+
+.box-last {
+    margin-bottom: 0px;
+    height: 40px
+;
+    padding: 0px;
+}
+
+.iconfont {
+    color: #353535;
+    vertical-align: baseline;
+    margin-right: 7px;
+    display: inline-block;
+}
+
+.box .item {
+    height: 41px;
+    box-sizing: border-box;
+    padding: 0px 30rpx;
+}
+
+.box .item text {
+    line-height: 40px;
+}
+
+.box .item .iconfont {
+    line-height: 40px;
+}
+
+.icon-right {
+    float: right;
+    line-height: 40px;
+    color: rgb(72, 194, 61);
+    vertical-align: middle;
+    font-size: 12px;
+    margin-right: 0px;
+}
+
+.result-right {
+    font-size: 12px;
+    color: #888888;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+.hint {
+    background: #fff;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    line-height: 14px;
+    height: 20px;
+    font-size: 12px;
+    color: #b2b2b2;
+    text-align: right;
+}
+
+._textarea{
+    box-sizing: border-box;
+    width: 100%;
+    color:#353535;
+    font-size: 0pt;
+}

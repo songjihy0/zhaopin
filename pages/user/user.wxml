@@ -1,0 +1,36 @@
+<view>
+    <view class="box-top r-content" data-target='s1' bindtap="navigateTo" data-url='../userInfo/userInfo'>
+        <view class="item" style='padding:10px 15px;'>
+            <image mode="aspectFit" src="{{userInfo.avatarUrl || userInfoFromWX.avatarUrl || '../../images/avatar.png'}}" class="img"></image>
+            <text>{{userInfo.name || userInfoFromWX.nickName}}</text>
+            <icon class="iconfont icon-right"></icon>
+            <view class="ripple" style="{{ripple.s1}}"></view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="item r-content" data-target='s2' bindtap="navigateTo" data-url='../resume/resume'>
+            <view style="border-bottom:1rpx solid rgb(239,239,244)">
+                <icon class="iconfont icon-jianli"></icon>
+                <text>简历</text>
+                <icon class="iconfont icon-right"></icon>
+                <view class="ripple" style="{{ripple.s2}}"></view>
+            </view>
+        </view>
+        <view class="item r-content" data-target='s3' bindtap='navigateTo' data-url='../collect/collect'>
+            <icon class="iconfont icon-collect"></icon>
+            <text>收藏</text>
+            <icon class="iconfont icon-right"></icon>
+            <view class="ripple" style="{{ripple.s3}}"></view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="item r-content" data-target='s4' bindtap="navigateTo" data-url='../config/config'>
+            <icon class="iconfont icon-config"></icon>
+            <text>设置</text>
+            <icon class="iconfont icon-right"></icon>
+            <view class="ripple" style="{{ripple.s4}}"></view>
+        </view>
+    </view>
+</view>
+
+<include src='../../common/toast.wxml' />

@@ -1,0 +1,19 @@
+<view>
+    <view class='animated lightSpeedIn box _relative r-content {{item.seeker_read?"":"hint"}}' wx:for='{{interviewList}}' bindtap='navigateTo' data-id='{{item.id}}' data-target='{{"s"+index}}' style='animation-delay: {{index*0.2}}s;-webkit-animation-delay: {{index*0.2}}s;'>
+        <view style='font-weight: 600;margin-bottom: 10px;color: #000'>{{item.job.name}}</view>
+        <view style='margin-bottom: 15px;'>{{item.job.company.name}}</view>
+        <view>
+            <view style='margin-bottom: 10px;'>
+                <text style='color:#888;display: inline-block;margin-right: 5px'>面试时间:</text>
+                <text>{{item.interview_date_time_filter}}</text>
+            </view>
+            <view class='_flex'>
+                <view style='color:#888;white-space:nowrap;margin-right: 5px'>面试地点:</view>
+                <view>{{item.i_address || item.job.company.address}}</view>
+            </view>
+        </view>
+        <view class='iconfont icon-right'></view>
+        <view class="ripple" style="{{ripple['s'+index]}}"></view>
+    </view>
+</view>
+<include src='../../../common/loader.wxml' />

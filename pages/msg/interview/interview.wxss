@@ -1,0 +1,31 @@
+page {
+    background-color: rgb(239, 239, 244);
+    box-sizing: border-box;
+}
+
+view {
+    font-size: 13px;
+    color: #353535;
+}
+
+.box {
+    background: #fff;
+    padding: 15px 30rpx;
+    margin-bottom: 12px;
+}
+
+.box-last {
+    margin-bottom: 0px;
+    height: 40px;
+}
+
+.icon-right {
+    position: absolute;
+    right: 0px;
+    top: 43%;
+}
+
+.hint {
+    border: 1px dashed #3399ff;
+    border-radius: 4px;
+}

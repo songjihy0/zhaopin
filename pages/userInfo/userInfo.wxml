@@ -1,0 +1,95 @@
+<view class="_relative" style="height:100%;">
+    <view class="box-top" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='chooseImg'>
+        <view class="item">
+            <image mode="aspectFit" src="{{filePath || userInfo.avatarUrl || userInfoFromWX.avatarUrl || '../../images/avatar.png'}}" class="img"></image>
+        </view>
+    </view>
+    <view class="box">
+        <view class="item">
+            <view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+                <icon class='iconfont icon-circle-edit'></icon>
+                <input value="{{userInfo.name}}" placeholder="姓名" placeholder-class="placeholder-class" bindinput='nameInput' />
+            </view>
+        </view>
+        <picker bindchange="bindPickerChange" range="{{sexArray}}">
+            <view class="item">
+                <view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+                    <icon class='iconfont icon-circle-edit'></icon>
+                    <view class="inputMsg placeholder-class" wx:if="{{!userInfo.sex}}">性别</view>
+                    <view class="inputMsg" wx:else>{{userInfo.sex}}</view>
+                </view>
+            </view>
+        </picker>
+        <picker bindchange="bindDatePickerChange" value="{{defaultDate}}" mode="date" start="1985-01-01" end="{{now}}" fields='month'>
+            <view class="item">
+                <view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+                    <icon class='iconfont icon-circle-edit'></icon>
+                    <view class="inputMsg placeholder-class" wx:if="{{!userInfo.birthday}}">出生年月</view>
+                    <view class="inputMsg" wx:else>{{userInfo.birthday}}</view>
+                </view>
+            </view>
+        </picker>
+    </view>
+    <view class='box'>
+        <!-- <view class="item">
+			<view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+				<icon class='iconfont icon-circle-edit'></icon>
+				<input value="{{userInfo.school}}" placeholder="毕业院校" placeholder-class="placeholder-class" />
+			</view>
+		</view>
+		<view class="item">
+			<view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+				<icon class='iconfont icon-circle-edit'></icon>
+				<input value="{{userInfo.major}}" placeholder="专业" placeholder-class="placeholder-class" />
+			</view>
+		</view> -->
+        <picker bindchange="bindDegreePickerChange" range="{{degrees}}" value='{{degreeIndex}}'>
+            <view class="item">
+                <view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+                    <icon class='iconfont icon-circle-edit'></icon>
+                    <view class="inputMsg placeholder-class" wx:if="{{!userInfo.degree}}">最高学历</view>
+                    <view class="inputMsg" wx:else>{{userInfo.degree}}</view>
+                </view>
+            </view>
+        </picker>
+        <!-- <view class="item">
+			<view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+				<icon class='iconfont icon-circle-edit'></icon>
+				<input value="{{userInfo.graduationYear}}" placeholder="毕业年份" placeholder-class="placeholder-class" />
+			</view>
+		</view> -->
+    </view>
+    <view class='box'>
+        <view class="item">
+            <view class="_flex _relative" style="border-bottom:1rpx solid rgb(239,239,244)">
+                <icon class='iconfont icon-circle-edit'></icon>
+                <input value="{{userInfo.telephone}}" placeholder="手机号" placeholder-class="placeholder-class" bindblur='checkMobile' bindinput='phoneInput' />
+                <icon type='warn' class='icon-warn' size='20' hidden='{{checkMobile}}'></icon>
+            </view>
+        </view>
+        <view class="item">
+            <view class="_flex _relative" style="border-bottom:1rpx solid rgb(239,239,244)">
+                <icon class='iconfont icon-circle-edit'></icon>
+                <input value="{{userInfo.email}}" placeholder="邮箱" placeholder-class="placeholder-class" bindblur='checkEmail' bindinput='emailInput' />
+                <icon type='warn' class='icon-warn' size='20' hidden='{{checkEmail}}'></icon>
+            </view>
+        </view>
+    </view>
+    <view class="box">
+        <view class='item'>
+            <view class="_flex" style="border-bottom:1rpx solid rgb(239,239,244)">
+                <icon class='iconfont icon-circle-edit'></icon>
+                <view class="inputMsg placeholder-class" wx:if="{{!userInfo.city}}" bindtap='toWorkplace'>所在城市</view>
+                <view class="inputMsg" wx:else bindtap='toWorkplace'>{{userInfo.city}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="_footer box" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='save'>
+        <view class='item'>
+            <icon class="iconfont icon-baocun"></icon>
+            <text>保存</text>
+        </view>
+    </view>
+</view>
+<include src="../../common/loader.wxml" />
+<include src='../../common/toast.wxml' />

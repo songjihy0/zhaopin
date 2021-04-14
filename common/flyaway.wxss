@@ -1,0 +1,49 @@
+@-webkit-keyframes popUp {
+	0% {
+		-webkit-transform: translate(0, 0) scale(1);
+		transform: translate(0, 0) scale(1)
+	}
+	10% {
+		-webkit-transform: translate(-6px, 6px) scale(1.05);
+		transform: translate(-6px, 6px) scale(1.05)
+	}
+	40% {
+		-webkit-transform: translate(-10px, 10px) scale(1.1);
+		transform: translate(-10px, 10px) scale(1.1);
+		opacity: 1
+	}
+	100% {
+		-webkit-transform: translate(500px, -500px) scale(0);
+		transform: translate(500px, -500px) scale(0);
+		opacity: 0
+	}
+}
+@keyframes popUp {
+	0% {
+		-webkit-transform: translate(0, 0) scale(1);
+		transform: translate(0, 0) scale(1)
+	}
+	10% {
+		-webkit-transform: translate(-6px, 6px) scale(1.05);
+		transform: translate(-6px, 6px) scale(1.05)
+	}
+	50% {
+		-webkit-transform: translate(-10px, 10px) scale(1.1);
+		transform: translate(-10px, 10px) scale(1.1);
+		opacity: 1
+	}
+	100% {
+		-webkit-transform: translate(500px, -500px) scale(0);
+		transform: translate(500px, -500px) scale(0);
+		opacity: 0
+	}
+}
+.flyaway {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both
+}
+.flyaway.popUp {
+	-webkit-animation-name: popUp;	/*//	animation-name: popUp*/
+}

@@ -1,0 +1,99 @@
+<view wx:if="{{ui.offsetLeft!=0}}" style='left:{{ui.offsetLeft}}px;width: {{ui.windowWidth}}px;opacity: {{ui.offsetLeft*0.002}}' class="shadow {{!ui.tStart? 'withAnimate': ''}}" bindtouchmove='handlerMove' bindtouchstart='handlerStart' bindtouchend='handlerEnd' catchtap='handlerPageTap'>
+</view>
+<view style='left:{{ui.offsetLeft}}px;width: {{ui.windowWidth}}px; position: fixed;height:{{windowHeight}}px;z-index: 12' bindtouchstart="handlerStart" bindtouchmove="handlerMove" bindtouchend="handlerEnd" class="mpage {{!ui.tStart? 'withAnimate': ''}}">
+    <view class="header _flex _fixed">
+        <icon class='iconfont icon-bars' bindtap='showBars'></icon>
+        <view class='search-box' bindtap='navigateTo' data-url='../search/search'>
+            <view class='iconfont icon-search'></view>
+            <text class='search'>搜索职位/公司</text>
+        </view>
+        <icon class='iconfont icon-scan' bindtap='showScan'></icon>
+    </view>
+    <view style='height: 43px;'></view>
+    <scroll-view style="height:{{windowHeight-43}}px;box-sizing:border-box;" scroll-y bindscrolltolower='loadMore'>
+        <view class='list' wx:if='{{jobList.length>0}}'>
+            <view class="item animated fadeInRight" wx:for='{{jobList}}' hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='navigateTo' data-url='../jobDetail/jobDetail?id={{item.id}}' data-id='{{item.id}}' style='animation-delay:{{index%limitCount*0.2}}s;-webkit-animation-delay:{{index%limitCount*0.2}}s'>
+                <view class="logo">
+                    <image src="{{item.company.logo || '../../images/avatar.png'}}" style="height:120rpx;width:120rpx;" background-size="cover"></image>
+                </view>
+                <view class="details">
+                    <view style='height: 45rpx;'>
+                        <text class="job-title" style='height: 45rpx;'>{{item.name}}</text>
+                        <text class="job-salary" style='height: 45rpx;'>{{item.salary_lower}}-{{item.salary_upper}}k</text>
+                    </view>
+                    <view class="company-name" style='height:40rpx;'>{{item.company.c_name_short}}</view>
+                    <view class="_block translucence-msg" style="height:40rpx;margin-top:10rpx">
+                        <text class="work-place">{{item.city}}</text>
+                        <text class="district">{{item.district}}</text>
+                        <text class="degree">{{item.degree_limit}}</text>
+                        <text class="_right release-date">{{item.release_date}}</text>
+                    </view>
+                    <view class="_block translucence-msg" style="height:40rpx;margin-top:6rpx">
+                        <text class="">{{item.company.financing_stage}}</text>
+                        <text class="scale">{{item.company.scale}}</text>
+                        <text class="company-type">{{item.company.field}}</text>
+                    </view>
+                </view>
+                <view style="clear:both;"></view>
+            </view>
+        </view>
+        <image wx:if='{{jobList.length==0 && searched}}' src='../../images/empty.png' class='empty'></image>
+        <view class='nomore' wx:if='{{searched && dataLimit && jobList.length>5}}'>
+            <view class='iconfont icon-meiyougengduoliao icon-nomore'></view>
+            <text>没有更多了~</text>
+        </view>
+    </scroll-view>
+</view>
+<view bindtouchstart="handlerStart" catchtouchmove="handlerMove" bindtouchend="handlerEnd" class="user" style="width: {{ui.menuWidth}}px;left:{{-ui.menuWidth/3 + ui.offsetLeft/3}}px">
+    <image src='../../images/bkg-2.jpg' style='width: {{ui.menuWidth}}px;height:100%'></image>
+    <scroll-view class='user-box'>
+        <view>
+            <view class='user-box-item img-text'>
+                <view class='avator-box' bindtap='navigateTo' data-url='../userInfo/userInfo'>
+                    <image src='{{userInfo.avatarUrl || userInfoFromWX.avatarUrl || "../../images/avatar.png"}}' class='avator'></image>
+                </view>
+                <text>{{userInfo.name || userInfoFromWX.nickName}}</text>
+            </view>
+        </view>
+        <view class='mrt10'>
+            <view hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='navigateTo' data-url='../collect/collect'>
+                <view class='user-box-item icon-text' style='border:none'>
+                    <view class='iconfont icon-collect'></view>
+                    <text>已收藏职位</text>
+                    <text class='ctn'>{{collectionLength}}</text>
+                </view>
+            </view>
+        </view>
+        <view class='line'></view>
+        <view class='mrt10'>
+            <view hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='setHope_job'>
+                <view class='user-box-item icon-text' style='border:none'>
+                    <view class='iconfont icon-job'></view>
+                    <text>求职意向</text>
+                    <text class='ctn'>{{userInfo.hope_job}}</text>
+                </view>
+            </view>
+            <view hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='navigateTo' data-url='../workplace/workplace?flag=userInfo_city&city={{userInfo.city}}'>
+                <view class='user-box-item icon-text user-box-item-last' style='border:none'>
+                    <view class='iconfont icon-place'></view>
+                    <text>工作地点</text>
+                    <text class='ctn'>{{userInfo.city}}</text>
+                </view>
+            </view>
+        </view>
+        <view class='footer-line'></view>
+        <view class='mrt10 config' hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='navigateTo' data-url='../config/config'>
+            <view class='icon-text'>
+                <view class='iconfont icon-config'></view>
+                <text>设置</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<include src="../../common/loader.wxml" />
+
+<include src='../../common/toast.wxml' />
+
+<modal bindconfirm="confirm" wx:if="{{setHope_job}}" no-cancel='{{no_hope_job}}' title='告诉我你想找什么工作？' bindcancel='cancel'>
+    <input class="modal-input" placeholder="{{userInfo.hope_job || '期待职位'}}" placeholder-class="placeholder-class" bindinput='input' bindfocus='focus' bindblur='blur' focus class='modal-input {{modal_input_focus?"focus":""}}' max-length='15' />
+</modal>

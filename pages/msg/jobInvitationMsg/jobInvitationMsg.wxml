@@ -1,0 +1,60 @@
+<view>
+    <view class='header _flex _relative'>
+        <block wx:for='{{pages}}'>
+            <view bindtap='changeCurrent' data-index='{{index}}' class="header-item {{current==index?'active':''}}" style='width:{{windowWidth/pages.length}}px;'>{{item.key}}</view>
+        </block>
+        <view class='slider' style='width:{{windowWidth/pages.length}}px;left:{{sliderLeft*current}}px'></view>
+    </view>
+    <view class='content'>
+        <swiper current='{{current}}' bindchange='currentChanged' style='height:{{windowHeight-40}}px'>
+            <block wx:for="{{pages}}" wx:for-item="page">
+                <swiper-item>
+                    <block wx:if='{{page.key=="全部" && page.loaded}}'>
+                        <view wx:for='{{InvicationList}}'>
+                            <view hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" class="item animated lightSpeedIn  {{item.seeker_read?'':'hint'}}" bindtap='navigateTo' data-id='{{item.id}}' data-job_id='{{item.job_id}}' style='margin-bottom:10px;animation-delay: {{index*0.2}}s;-webkit-animation-delay: {{index*0.2}}s;'>
+                                <view class="avator">
+                                    <image src="{{item.job.company.logo || '../../../images/avatar.png'}}" style="height:120rpx;width:120rpx; border-radius: 50%" background-size="cover"></image>
+                                </view>
+                                <view class="details">
+                                    <view class="_block">
+                                        <text class="job-title">{{item.hr.name}}({{item.hr.job}})邀请你投递</text>
+                                        <text class='deliver-date'>{{item.invicate_date_time_filter}}</text>
+                                        <view style="clear:both"></view>
+                                    </view>
+                                    <text class="work-place">{{item.job.name}}</text>
+                                    <text>({{item.job.type}})</text>
+                                    <view class="_block translucence-msg" style="margin-top:10rpx">{{item.description}}</view>
+                                </view>
+                                <view style="clear:both;"></view>
+                            </view>
+                        </view>
+                        <image src='../../../images/empty.png' class='empty' wx:if='{{InvicationList.length==0}}'></image>
+                    </block>
+                    <block wx:if='{{page.key!="全部" && page.loaded }}'>
+                        <view wx:for='{{InvicationList}}'>
+                            <view class="item animated lightSpeedIn {{item.seeker_read?'':'hint'}}" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" wx:if='{{item.status==page.key}}' bindtap='navigateTo' data-id='{{item.id}}' data-job_id='{{item.job_id}}' style='margin-bottom: 10px;animation-delay: {{index*0.2}}s;-webkit-animation-delay: {{index*0.2}}s;'>
+                                <view class="avator">
+                                    <image src="{{item.job.company.logo || '../../../images/avatar.png'}}" style="height:120rpx;width:120rpx;" background-size="cover"></image>
+                                </view>
+                                <view class="details">
+                                    <view class="_block">
+                                        <text class="job-title">{{item.hr.name}}({{item.hr.job}})邀请你投递</text>
+                                        <text class='deliver-date'>{{item.invicate_date_time_filter}}</text>
+                                        <view style="clear:both"></view>
+                                    </view>
+                                    <text class="work-place">{{item.job.name}}</text>
+                                    <text>({{item.job.type}})</text>
+                                    <view class="_block translucence-msg" style="margin-top:10rpx">
+                                        <text>{{item.description}}</text>
+                                    </view>
+                                </view>
+                                <view style="clear:both;"></view>
+                            </view>
+                        </view>
+                        <image src='../../../images/empty.png' class='empty' wx:if='{{page.count==0}}'></image>
+                    </block>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</view>

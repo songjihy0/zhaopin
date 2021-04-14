@@ -1,0 +1,8 @@
+<view class='box'>
+
+	<textarea value='{{selfAssessment}}' maxlength="{{maxlength}}" class="_textarea" bindinput='textareaInput' style='height:{{windowHeight-24-20-41-10}}px;max-height:{{windowHeight-24-20-41-10}}px'></textarea>
+	<view class="hint">{{selfAssessment.length}}/{{maxlength}}</view>
+	<view style="padding:0px 30rpx">
+		<button type="primary" class='btn' bindtap="save">保存修改</button>
+	</view>
+</view>

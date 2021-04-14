@@ -1,0 +1,200 @@
+@import "common/iconfont.wxss";
+@import "common/loader.wxss";
+@import "common/ripple.wxss";
+@import 'common/animate.wxss';
+@import 'common/toast.wxss';
+view,
+scroll-view,
+text {
+    margin: 0px;
+    padding: 0px;
+}
+
+view,
+scroll-view {
+    font-family: '微软雅黑';
+    font-size: 14px;
+    color: #353535;
+}
+
+.container {
+    background: #ffffff;
+    box-sizing: border-box;
+    padding: 20rpx 30rpx;
+}
+
+.container-column {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.container-row {
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+}
+
+.placeholder-class {
+    color: #b2b2b2;
+}
+
+._fixed {
+    position: fixed;
+    z-index: 10000;
+}
+
+._block {
+    display: block;
+}
+
+._inline-block {
+    display: inline-block;
+}
+
+._flex {
+    display: flex;
+}
+
+._allcenter {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+._left {
+    float: left;
+}
+
+._right {
+    float: right;
+}
+
+._relative {
+    position: relative;
+}
+
+._nowrap {
+    white-space: nowrap;
+}
+
+.arrows-down {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-left: 8rpx solid transparent;
+    border-right: 8rpx solid transparent;
+    border-top: 8rpx solid #353535;
+}
+
+.placeicon-1 {
+    width: 12rpx;
+    height: 18px;
+    background: #2196f3;
+    display: inline-block;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+
+.placeicon-2 {
+    width: 12rpx;
+    height: 18px;
+    background: #e53935;
+    display: inline-block;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+
+.click-view {
+    background: rgba(0, 0, 0, 0.2) !important;
+    /*background:rgb(239,239,244) !important;*/
+}
+
+click-view-2 {
+    background: #2176f3 !important;
+}
+
+.btn-default {
+    display: inline-block;
+    padding-left: 15rpx;
+    padding-right: 15rpx;
+    line-height: 2.2;
+    font-size: 13px;
+    color: #353535;
+    margin-left: 10px;
+}
+
+.modal-input {
+    width: 100%;
+    height: 32px;
+    color: #353535;
+    border-radius: 4px;
+    border: 1px solid #d7dde4;
+    background-color: #fff;
+    transition: border .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.modal-input.focus {
+    box-shadow: 0 0 0 2px rgba(51, 153, 255, .2);
+    border-color: #5cadff;
+}
+
+.empty {
+    height: 150px;
+    width: 210px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.nomore {
+    height: 40px;
+    box-sizing: border-box;
+    background: rgb(239, 239, 244);
+    text-align: center;
+}
+
+.icon-nomore {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 17px;
+    color: #1296db;
+}
+
+.nomore text {
+    font-size: 13px;
+}
+
+.icon-warn {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.disable {
+    color: #c3cbd6 !important;
+    background-color: #f7f7f7 !important;
+}
+
+swiper-item {
+    overflow-y: auto;
+    height: auto;
+    overflow-x: hidden
+}

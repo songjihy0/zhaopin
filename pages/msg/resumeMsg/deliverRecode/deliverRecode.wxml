@@ -1,0 +1,66 @@
+<view>
+    <view class='box box-top'>
+        <view class="item ">
+            <view class="logo">
+                <image src="{{detail.job.company.logo || '../../../../images/avatar.png'}}" style="height:120rpx;width:120rpx;" background-size="cover"></image>
+            </view>
+            <view class="details">
+                <view class="_block">
+                    <text class="job-title">{{detail.job.name}}</text>
+                    <text class='deliver-date'>{{detail.deliver_date_time_filter}}</text>
+                    <view style="clear:both"></view>
+                </view>
+                <text class="work-place">{{detail.job.city}}</text>
+                <text class="company-name">{{detail.job.company.name}}</text>
+                <view class="_block translucence-msg" style="margin-top:10rpx">
+                    <text class="job-salary">{{detail.job.salary_lower}}-{{detail.job.salary_upper}}k</text>
+                </view>
+            </view>
+            <view style="clear:both;"></view>
+        </view>
+    </view>
+    <view class='box box-status'>
+        <text>当前状态:</text>
+        <text style='margin-left:10px' wx:if='{{detail.status!="未查看"}}'> [{{detail.status}}]</text>
+        <text style='margin-left:10px' wx:if='{{detail.status=="未查看"}}'> [投递成功]</text>
+    </view>
+    <view class='box' style="padding:20px 0px">
+        <view class='item-flex' wx:if="{{detail.deliver_date_time}}">
+            <view class='item-icon item-1'>
+                <view class='iconfont icon-send' style='left:-2px;top:-1px'></view>
+            </view>
+            <view class='item-con'>
+                <view>对方已成功接收你的简历</view>
+                <view style='margin-top:7px;'>{{detail.deliver_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex' wx:if="{{detail.read_date_time}}">
+            <view class='item-icon'>
+                <view class='iconfont icon-preview' style='font-size: 18px'></view>
+            </view>
+            <view class='item-con'>
+                <view>查看了你的简历</view>
+                <view style='margin-top:7px;'>{{detail.read_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex' wx:if="{{detail.reject_date_time}}">
+            <view class='item-icon'>
+                <view class='iconfont icon-reject-resume' style='font-size: 18px'></view>
+            </view>
+            <view class='item-con'>
+                <view>你的简历被判定为不合适</view>
+                <view style='margin-top:7px;'>{{detail.reject_date_time_filter}}</view>
+            </view>
+        </view>
+        <view class='item-flex' wx:if="{{detail.interview_date_time}}">
+            <view class='item-icon'>
+                <view class='iconfont icon-sey-letter-a' style="font-size:22px"></view>
+            </view>
+            <view class='item-con'>
+                <view>邀请你参加面试</view>
+                <view style='margin-top:7px;'>{{detail.interview_date_time_filter}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<include src='../../../../common/loader.wxml' />

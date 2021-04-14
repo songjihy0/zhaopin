@@ -1,0 +1,53 @@
+page{
+	background-color:rgb(239,239,244);
+	box-sizing:border-box;
+	padding:10px 30rpx;
+}
+
+.box{
+	background: #fff;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+
+.item{
+	padding:10px 30rpx;
+	border-bottom:1rpx solid rgb(239,239,244);
+	box-sizing: border-box;
+}
+
+.text-1{
+	font-size: 13px;
+	color:#353535;
+	white-space:nowrap; 
+	text-overflow: ellipsis;
+	overflow:hidden; 
+}
+
+.text-2{
+	margin-top:5px;
+	font-size: 14px;
+	color:#000;
+	font-weight: 500;
+	white-space:nowrap; 
+	text-overflow: ellipsis;
+	overflow:hidden; 
+}
+
+.text-3{
+	color:#888888;
+	margin-top:6px;
+	font-size: 12px;
+	line-height: 16px;
+	max-height: 32px;
+	text-overflow: ellipsis;
+	overflow:hidden; 
+}
+.btn{
+	margin-top:15px;
+	font-size:14px;
+	border-radius:1px;
+	padding-top:3px;
+	padding-bottom: 3px;
+}

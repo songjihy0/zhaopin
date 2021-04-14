@@ -1,0 +1,35 @@
+<view>
+    <view class="box">
+        <view class="item r-content" bindtap='toEditResume' data-flag="true" data-index="{{index}}" wx:for="{{resumes}}" bindlongtap='openActionSheet' data-id='{{item.id}}' data-target='{{"s"+index}}'>
+            <view style="border-bottom:1rpx solid rgb(239,239,244)">
+                <text>{{item.name}}</text>
+                <icon class="iconfont icon-right"></icon>
+            </view>
+            <view class='ripple' style='{{ripple["s"+index]}}'></view>
+        </view>
+    </view>
+    <view class='box' wx:if='{{resumes.length>0}}'>
+        <picker bindchange="bindPickerChange" range="Object Array" range-key="name" value="{{index}}" range="{{resumes}}">
+            <view class="item r-content" data-target='{{"s"+resumes.length}}' bindtap='setDefaultResume'>
+                <text>默认投递简历</text>
+                <icon class="iconfont icon-right"></icon>
+                <text class="default-resume-text">{{defaultResumeName}}</text>
+                <view class='ripple' style='{{ripple["s"+resumes.length]}}'></view>
+            </view>
+        </picker>
+    </view>
+    <view class='box'>
+        <view class="item r-content" data-target='{{"s"+(resumes.length+1)}}' bindtap='newResume' data-flag='true'>
+            <text>新建简历</text>
+            <icon class="iconfont icon-right"></icon>
+            <text class="default-resume-text">还可创建{{5-resumes.length}}份简历</text>
+            <view class='ripple' style='{{ripple["s"+(resumes.length+1)]}}'></view>
+        </view>
+    </view>
+</view>
+<modal bindconfirm="confirm" wx:if="{{changeResumeName}}" bindcancel='cancel' title='修改简历名称'>
+    <input class="modal-input" placeholder="{{actionResumeName}}" placeholder-class="placeholder-class" bindinput='inputNewResumeName' data-id='{{actionResumeId}}' foucs class='modal-input' value='{{newResumeName}}' max-length='20' />
+</modal>
+<include src='../../common/loader.wxml' />
+<include src='../../common/toast.wxml' />
+

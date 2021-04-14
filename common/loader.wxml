@@ -1,0 +1,5 @@
+<!-- <view class="loader-box {{loading? '': 'visibility'}}" hidden='{{hiddenLoader}}' >
+  <view class='loader'></view>
+</view> -->
+
+<view class="loader {{loading? '': 'visibility'}}" wx:if='{{!hiddenLoader}}' ></view>

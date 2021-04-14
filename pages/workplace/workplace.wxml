@@ -1,0 +1,37 @@
+<view class="noBackCon">
+    <view class="placeicon-1"></view>
+    <text>期待工作地点</text>
+</view>
+<view class="container" wx:if='{{workplaceCity!=""}}'>
+    <text class="hope-workplace">{{workplaceCity}}</text>
+    <icon type="success_no_circle" color="green" size="15" style="float:right" bindtap="goBack"></icon>
+</view>
+<view class="noBackCon">
+    <view class="placeicon-2"></view>
+    <text>热门城市</text>
+</view>
+<view class="container list">
+    <button class="item" hover-start-time="10" hover-stay-time="200" bindtap="selectPlace" data-place="全国">全国</button>
+    <button class="item" hover-start-time="10" hover-stay-time="200" bindtap="selectPlace" data-place="深圳">深圳</button>
+    <button class="item" hover-start-time="10" hover-stay-time="200" bindtap="selectPlace" data-place="北京">北京</button>
+    <button class="item" hover-start-time="10" hover-stay-time="200" bindtap="selectPlace" data-place="上海">上海</button>
+    <button class="item" hover-start-time="10" hover-stay-time="200" bindtap="selectPlace" data-place="广州">广州</button>
+    <button class="item" hover-start-time="10" hover-stay-time="200" bindtap="selectPlace" data-place="杭州">杭州</button>
+</view>
+<view class="noBackCon">
+    <view class="placeicon-2"></view>
+    <text>选择城市</text>
+</view>
+<view style='background: #fff; padding:40px 40px;box-sizing: border-box;height:{{windowHeight-165}}px;'>
+    <picker-view bindchange="pickerChange" indicator-style="line-height:40px;height:40px;border-top:1px solid #888888;border-bottom:1px solid #888888;box-sizing:border-box;">
+        <picker-view-column style="height:250px; margin-right: 20px;">
+            <view class="cidx-text" wx:for="{{city_data}}" style='line-height: 40px'>{{item.province}}</view>
+        </picker-view-column>
+        <picker-view-column style="height:250px; margin-left: 20px;">
+            <view class="cidx-text" wx:for="{{city_data[pickerValue[0]].citys}}" style='line-height: 40px'>{{item}}</view>
+        </picker-view-column>
+    </picker-view>
+</view>
+
+
+<include src='../../common/toast.wxml' />

@@ -1,0 +1,74 @@
+page{
+	background:rgb(239,239,244);
+}
+
+.box{
+	background: #fff;
+	padding:20px 0px;
+	margin-top:40rpx;
+}
+
+.item{
+	flex-grow: 1;
+	justify-content: space-between;
+	text-align: center;
+	margin:0px 40rpx;
+}
+
+.text{
+	color:#888888;
+}
+
+.iconfont{
+	font-size:55rpx;
+	width: 100rpx;
+	height:100rpx;
+	background: rgb(230,230,30);
+	border-radius: 50rpx;
+	display: inline-block;
+	line-height: 94rpx;
+	color:rgb(245,245,245);
+	margin-bottom: 10px;
+}
+
+.icon-jianli{
+	font-size: 52rpx;
+}
+
+.icon-sey-letter-a{
+	background: rgb(255,91,91);
+}
+
+.icon-preview2{
+	background: rgb(183,214,173);
+}
+
+.bkg-text-click .icon-jianli{
+	background: rgb(210,210,30);
+}
+
+.bkg-text-click .text{
+	color:#353535;
+}
+
+.bkg-text-click .icon-sey-letter-a{
+	background: rgb(235,71,71);
+}
+
+.bkg-text-click .icon-preview2{
+	background: rgb(163,200,153);
+}
+
+.hintNum{
+	width: 40rpx;
+	line-height: 40rpx;
+	height:40rpx;
+	background: #e64340;
+	border-radius: 50%;
+	position: absolute;
+	top:0rpx;
+	right: 15rpx;
+	color:#fff;
+	text-align: center;
+	font-size: 11px;
+}

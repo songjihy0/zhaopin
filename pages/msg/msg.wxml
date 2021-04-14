@@ -1,0 +1,22 @@
+<view>
+    <view class='box _flex'>
+        <view class='item _relative' hover="true" hover-start-time="10" hover-stay-time="300" hover-class="bkg-text-click" bindtap='navigateTo' data-url='resumeMsg/resumeMsg'>
+            <view class='iconfont icon-jianli'></view>
+            <view class='hintNum' wx:if='{{msg.resumeStatusLength>0}}'>{{msg.resumeStatusLength}}</view>
+            <view class='text'>简历状态</view>
+        </view>
+        <view class='item _relative' hover="true" hover-start-time="10" hover-stay-time="300" hover-class="bkg-text-click" bindtap='navigateTo' data-url='jobInvitationMsg/jobInvitationMsg'>
+            <view class='iconfont icon-sey-letter-a'></view>
+            <view class='hintNum' wx:if='{{msg.jobInvicationLength>0}}'>{{msg.jobInvicationLength}}</view>
+            <view class='text'>职位邀请</view>
+        </view>
+        <view class='item _relative' hover="true" hover-start-time="10" hover-stay-time="300" hover-class="bkg-text-click" bindtap='navigateTo' data-url='interview/interview'>
+            <view class='iconfont icon-preview2'></view>
+            <view class='hintNum' wx:if='{{msg.interviewLength>0}}'>{{msg.interviewLength}}</view>
+            <view class='text'>面试邀约</view>
+        </view>
+    </view>
+</view>
+<include src='../../common/loader.wxml' />
+
+<include src='../../common/toast.wxml' />

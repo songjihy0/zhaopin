@@ -1,0 +1,16 @@
+<view>
+	<view class="box" wx:if="{{resume.interships.length>0}}">
+		<view wx:for="{{resume.interships}}" hover="true" hover-start-time="10" hover-stay-time="300"hover-class="click-view" bindtap='toEditIntership' data-start_date='{{item.start_date}}' data-end_date='{{item.end_date}}' data-company="{{item.company}}" data-job='{{item.job}}' data-description='{{item.description}}' data-id="{{item.id}}" data-flag='true' data-resume_id='{{item.resume_id}}'>
+			<view class="item"> 
+				<view class="dateTop">{{item.start_date}}~{{item.end_date}}</view>
+				<view class="text-2">{{item.company}}~{{item.job}}</view>
+				<view class="text-3" wx:if='{{item.description}}'>{{item.description}}</view>
+			</view>
+		</view>
+	</view>
+	<button type="primary" class="btn" bindtap='toEditIntership' data-flag='false'>添加更多教育经历</button>
+</view>
+
+<include src='../../../common/loader.wxml' />
+
+<include src='../../../common/toast.wxml' />

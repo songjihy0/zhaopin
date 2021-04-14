@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/user/user",
+    "pages/msg/msg",
+    "pages/resume/resume",
+    "pages/search/search",
+    "pages/msg/resumeMsg/resumeMsg",
+    "pages/msg/resumeMsg/deliverRecode/deliverRecode",
+    "pages/editResume/editResume",
+    "pages/editResume/education/editEducation/editEducation",
+    "pages/msg/interview/interview",
+    "pages/msg/interview/interviewDetail/interviewDetail",
+    "pages/msg/interview/interviewDetail/comment/comment",
+    "pages/msg/jobInvitationMsg/jobInvitationMsg",
+    "pages/msg/jobInvitationMsg/invication/invication",
+    "pages/editResume/selfAssessment/selfAssessment",
+    "pages/editResume/hope/hope",
+    "pages/editResume/education/education",
+    "pages/editResume/honor/honor",
+    "pages/editResume/honor/editHonor/editHonor",
+    "pages/editResume/intership/intership",
+    "pages/editResume/intership/editIntership/editIntership",
+    "pages/editResume/project/project",
+    "pages/editResume/project/editProject/editProject",
+    "pages/workplace/workplace",
+    "pages/userInfo/userInfo",
+    "pages/collect/collect",
+    "pages/config/config",
+    "pages/jobDetail/jobDetail",
+    "pages/space",
+    
+    "pages/space/space"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#353535",
+    "navigationBarTitleText": "招聘",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#353535",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "icons/home_3.png",
+        "selectedIconPath": "icons/home_4.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "iconPath": "icons/msg_1.png",
+        "selectedIconPath": "icons/msg_2.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "icons/user_3.png",
+        "selectedIconPath": "icons/user_4.png",
+        "text": "我"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 15000,
+    "downloadFile": 20000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

@@ -1,0 +1,176 @@
+page{
+	background-color:rgb(239,239,244);
+	box-sizing:border-box;
+}
+
+view{
+	font-size: 13px;
+}
+
+.box,.box-top{
+	margin-top:10px;
+	background: #fff;
+	box-sizing: border-box;
+	padding:10px 30rpx;
+}
+
+.box-top{
+	margin-top:0px;
+}
+
+.datebox{
+	padding:10px 30rpx 0px 30rpx;
+}
+
+.title{
+	font-size: 14px;
+	color:#000;
+}
+
+.item{
+	margin-top:5px;
+}
+
+.dateItem{
+	border-left:1rpx solid rgb(239,239,244);
+	padding:15px 0px 10px 15px;
+	position: relative;
+	margin-top:6px;
+	margin-left: 2px;
+}
+
+.dateItem:before{
+	content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    background: #2196f3;
+}
+
+.text-2{
+	font-size: 14px;
+	color:#000;
+	font-weight: 500;
+	white-space:nowrap; 
+	text-overflow: ellipsis;
+	overflow:hidden; 
+}
+
+.text-3{
+	color:#888888;
+	margin-top:6px;
+	font-size: 12px;
+	line-height: 16px;
+	max-height: 32px;
+	text-overflow: ellipsis;
+	overflow:hidden; 
+}
+
+.text-4{
+	color:#888888;
+	margin-top:6px;
+	font-size: 12px;
+	line-height: 16px;
+	max-height: 48px;
+	text-overflow: ellipsis;
+	overflow:hidden; 
+}
+.dateTop{
+	position: absolute;
+	top:-8px;
+}
+
+.imgbox{
+	position: absolute;
+	right:10px;
+	top:10px;
+	border:1px solid #148FA4;
+	border-radius:29px;
+	width:58px;
+	height:58px;
+	 box-sizing: border-box;
+}
+
+.img{
+	width:50px;
+	height:50px;
+	border-radius:25px;
+	margin:3px 0px 0px 3px;
+}
+
+.add{
+	text-align:center;
+	padding:9px 0px;
+	background:#fff;
+	border-top:1rpx solid rgb(239,239,244);
+}
+
+.iconfont{
+	margin-right:10px;
+	font-size:13px;
+}
+
+.footer{
+	height:40px
+;
+}
+
+.handle{
+	height:40px;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	width:100%;
+	box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+	margin-top:10px;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+.handle-btn{
+	flex-grow: 1;
+	text-align: center;
+}
+
+.preview{
+	border-right:1px solid rgb(239,239,244);
+}
+
+.handle text,.handle .iconfont{
+	line-height: 40px;
+}
+
+.iconfont.save{
+	font-size: 14px;
+}
+
+.icon-preview{
+	font-size: 12px;
+}
+
+.pc-msg{
+	height:45px;
+	background:#21b6f3;
+	line-height: 45px;
+}
+
+.pc-msg view,.pc-msg text{
+	height: 45px;
+	line-height: 45px;
+	display: inline-block;
+	color:#f0f0f0;
+}
+
+.pc-msg .icon-right{
+	float: right;
+	margin-right: 10px;
+	font-size: 12px;
+}
+
+.pc-msg .icon-jianli{
+	font-size: 16px;
+	margin-left: 15px;
+}

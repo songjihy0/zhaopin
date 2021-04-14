@@ -1,0 +1,25 @@
+<view class="box" style='margin-top:15px;'>
+	<view class="item _flex _relative">
+		<view class="iconfont icon-circle-edit"></view>
+		<input class="input" value="{{honor.name}}" placeholder="比赛项目名称" placeholder-class="placeholder-class" bindinput='input' data-key='name' />
+		<icon type='warn' class='icon-warn' size='20' hidden='{{check.name}}'></icon>
+	</view>
+	<picker bindchange="bindDatePickerChange" value="{{honor.date}}" mode="date" start="2000-01-01" end="{{now}}" fields='month'>
+		<view class="item _flex _relative" style="margin-top:20px">
+			<view class="iconfont icon-circle-edit"></view>
+			<view class="input" wx:if="{{honor.date}}">{{honor.date}}获奖</view>
+			<view class="input placeholder-class" wx:else>获奖时间</view>
+			<icon type='warn' class='icon-warn' size='20' hidden='{{check.date}}'></icon>
+		</view>
+	</picker>
+	<picker bindchange='bindPrizePickerChange' value='{{prizeIndex}}' range='{{prizes}}'>
+		<view class="item _flex _relative">
+			<view class="iconfont icon-circle-edit"></view>
+			<view class='input' wx:if='{{honor.prize}}'>{{honor.prize}}</view>
+			<view class='input placeholder-class' wx:else>奖项</view>
+			<icon type='warn' class='icon-warn' size='20' hidden='{{check.prize}}'></icon>
+		</view>
+	</picker>
+	<button type="primary" class='btn' bindtap="save">保存修改</button>
+	<button type="default" wx:if='{{flag}}' class='btn' style='margin-top:15px;margin-bottom: 15px;' bindtap='delete'>删除此荣誉奖项</button>
+</view>

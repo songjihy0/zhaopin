@@ -1,0 +1,58 @@
+Page{
+	background:#fff;
+	box-sizing: border-box;
+}
+
+.box{
+	padding:0px 30rpx;
+}
+
+.item{
+	height:36px;
+	border-bottom: 1rpx solid rgb(239,239,244);
+}
+.iconfont{
+	line-height: 36px;
+	vertical-align: middle;
+	color:rgb(72,194,61);
+}
+.present{
+	height:36px;
+	line-height: 36px;
+	vertical-align: middle;
+}
+.btn{
+	font-size: 14px;
+	margin-top:20px;
+	padding-top:3px;
+	padding-bottom: 3px;
+	border-radius: 1px
+}
+
+.input{
+	flex-grow: 1;
+	line-height:36px;
+	height:100%;
+	vertical-align: middle;
+	margin-left:8px;
+}
+
+._textarea{
+	height:120px;
+	box-sizing: border-box;
+	width: 100%;
+	color:#353535;
+	background: rgb(239,239,244);
+	padding:5px 5px 0px 5px;
+}
+
+.hint{
+	background: rgb(239,239,244);
+	padding:0px 5px;
+	box-sizing: border-box;
+	line-height: 14px;
+	height: 20px;
+	font-size: 12px;
+	color:#b2b2b2;
+	text-align: right;
+}

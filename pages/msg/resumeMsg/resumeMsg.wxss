@@ -1,0 +1,105 @@
+page {
+    background: rgb(239, 239, 244);
+}
+
+.header {
+    background: #fff;
+    line-height: 40px;
+    height: 40px;
+}
+
+.header-item {
+    justify-content: space-around;
+    text-align: center;
+    color: #888888;
+}
+
+.slider {
+    height: 8rpx;
+    position: absolute;
+    background: #2196f3;
+    top: 37px;
+    transition: all 0.3s ease;
+}
+
+.active {
+    color: #353535;
+    transition: all 0.3s ease;
+}
+
+.list {
+    width: 100%;
+    background: #fff;
+}
+
+.item {
+    width: 100%;
+    padding: 25rpx 25rpx 0 25rpx;
+    box-sizing: border-box;
+    background: #fff;
+    border-bottom: 1rpx solid rgba(50, 40, 50, 0.1);
+}
+
+.logo {
+    float: left;
+    width: 175rpx;
+    /*background:rgba(0,0,0,0.1);*/
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+}
+
+.details {
+    float: left;
+    width: 518rpx;
+    height: 100%;
+    padding-bottom: 20rpx;
+}
+
+.job-title {
+    font-weight: 700;
+    font-size: 30rpx;
+    float: left;
+}
+
+.deliver-date {
+    float: right;
+}
+
+.job-salary {
+    color: #ff9a00;
+    font-weight: 600;
+}
+
+.company-name {
+    color: #353535;
+    margin-left: 15px;
+}
+
+.status {}
+
+.translucence-msg {
+    color: #888888;
+}
+
+.work-place {}
+
+.internship,
+.degree,
+.company-type {
+    margin-left: 15rpx;
+}
+
+.release-date {
+    color: #b2b2b2;
+}
+
+.hint {
+    border: 1px dashed #3399ff;
+    border-radius: 4px;
+}
+
+.content{
+    overflow-x: hidden
+}

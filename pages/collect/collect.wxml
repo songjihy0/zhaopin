@@ -1,0 +1,46 @@
+<view>
+    <view class="list">
+        <view wx:for='{{collections}}' class="animated fadeInLeft" style='margin-bottom: 10px;background: #fff;animation-delay: {{index*0.2}}s;-webkit-animation-delay:{{index*0.2}}s'>
+            <view class="item r-content" data-target='{{"s_"+index}}' bindtap='navigateTo' data-url='../jobDetail/jobDetail?id={{item.job.id}}'>
+                <view class="logo">
+                    <image src="{{item.job.company.logo || '../../images/avatar.png'}}" style="height:120rpx;width:120rpx;" background-size="cover"></image>
+                </view>
+                <view class="details">
+                    <view style='height: 40rpx;'>
+                        <text class="job-title">{{item.job.name}}</text>
+                        <text class="job-salary">{{item.job.salary_lower}}-{{item.job.salary_upper}}k</text>
+                    </view>
+                    <view class="company-name" style='height: 40rpx;'>{{item.job.company.name}}</view>
+                    <view class="_block translucence-msg" style="height:40rpx;margin-top:10rpx">
+                        <text class="work-place">{{item.job.city}}</text>
+                        <text class="district">{{item.job.district}}</text>
+                        <text class="degree">{{item.job.degree_limit}}</text>
+                        <text class="_right release-date">{{item.job.release_date}}</text>
+                    </view>
+                    <view class="_block translucence-msg" style="height:40rpx;margin-top:6rpx">
+                        <text class="">{{item.job.company.financing_stage}}</text>
+                        <text class="scale">{{item.job.company.scale}}</text>
+                        <text class="company-type">{{item.job.company.field}}</text>
+                    </view>
+                </view>
+                <view style="clear:both;"></view>
+                <view class='ripple' style='{{ripple["s_"+index]}}'></view>
+            </view>
+            <view class="handleBar">
+                <view class="handleItem handleItem-1 r-content" data-target='{{"s"+index}}' bindtap='judgeDelete' data-id='{{item.id}}' data-index='{{index}}'>
+                    <icon class="iconfont icon-quxiaoshoucang"></icon>
+                    <text>取消收藏</text>
+                    <view class='ripple' style='{{ripple["s"+index]}}'></view>
+                </view>
+                <!-- <view class="handleItem" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap='sendResume' data-id='{{item.job.id}}'>
+                    <icon class="iconfont icon-send"></icon>
+                    <text>发送简历</text>
+                </view> -->
+            </view>
+        </view>
+    </view>
+    <image wx:if='{{collections.length==0}}' src='../../images/empty.png' class='empty'></image>
+</view>
+<include src='../../common/loader.wxml' />
+
+<include src='../../common/toast.wxml' />

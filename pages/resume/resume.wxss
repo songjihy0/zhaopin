@@ -1,0 +1,55 @@
+page {
+    background-color: rgb(239, 239, 244);
+    box-sizing: border-box;
+}
+
+.box,
+.box-top {
+    margin-top: 20px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.box-top {
+    padding: 10px 30rpx;
+    margin-top: 0px;
+}
+
+.iconfont {
+    float: right;
+    line-height: 40px;
+    color: rgb(72, 194, 61);
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.box .item {
+    height: 41px;
+    box-sizing: border-box;
+    padding: 0px 30rpx;
+}
+
+.box .item text {
+    line-height: 40px;
+}
+
+.default-resume-text {
+    font-size: 12px;
+    color: #888888;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+input {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 40px);
+}
+
+.footer {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    background: #fff;
+}

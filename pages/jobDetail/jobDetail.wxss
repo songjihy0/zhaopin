@@ -1,0 +1,290 @@
+@import "../../common/flyaway.wxss";
+page {
+    background-color: rgb(239, 239, 244);
+    box-sizing: border-box;
+}
+
+view {
+    font-size: 13px;
+}
+
+.box {
+    background: #fff;
+    padding: 0px 30rpx;
+    margin-bottom: 12px;
+}
+
+.box-last {
+    margin-bottom: 0px;
+    height: 40px
+;
+}
+
+.line {
+    border-bottom: 1rpx solid rgb(239, 239, 244);
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+
+/*
+.item{
+	padding:10px 0px;
+}*/
+
+.item,
+.item view {
+    color: #888888;
+}
+
+.item {
+    padding-bottom: 15px;
+}
+
+.iconfont {
+    margin-right: 12rpx;
+    color: #888888;
+    vertical-align: baseline;
+}
+
+.jobName {
+    font-weight: 600;
+}
+
+.salary {
+    color: #09bb07;
+    margin-left: 20rpx;
+    font-weight: 600;
+}
+
+.icon-star,
+.icon-star-fill {
+    float: right;
+    font-size: 20px;
+    line-height: 32px;
+    line-height: 32px;
+    vertical-align: baseline;
+}
+
+.icon-star-fill {
+    color: #09bb07;
+}
+
+.iconMR0 {
+    margin-right: 0px;
+}
+
+.title {
+    height: 32px;
+    font-size: 16px;
+    color: #353535;
+}
+
+.jobName,
+.salary,
+.status {
+    float: left;
+    height: 32px;
+    line-height: 32px;
+}
+
+.icon-text {
+    height: 34px;
+    margin-top: 5px;
+}
+
+.icon-text view {
+    float: left;
+    margin-right: 30rpx;
+    color: #353535;
+}
+
+.icon-text view .iconfont {
+    font-size: 14px;
+    vertical-align: baseline;
+}
+
+.icon-text view text {
+    font-size: 13px;
+}
+
+.welfarebox {
+    color: #888888;
+}
+
+.welfare {
+    width: 145rpx;
+    float: left;
+    color: #888888;
+}
+
+.welfareList {
+    display: inline-block;
+    width: 545rpx;
+    color: #888888;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.logo {
+    padding: 25rpx 25rpx 25rpx 0px;
+}
+
+.companyMsg {
+    flex-grow: 1;
+    padding: 25rpx 0px;
+}
+
+.companyMsg text {
+    color: #888888;
+}
+
+.iconH {
+    line-height: 170rpx;
+}
+
+.item .item-top {
+    color: #353535;
+    line-height: 40px;
+    height: 40px;
+    font-size: 14px;
+    border-bottom: 1rpx solid rgb(239, 239, 244);
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.iconFloat {
+    float: right;
+}
+
+.publisherDetail {
+    padding-left: 20px;
+}
+
+.publisherName {
+    color: #353535;
+    font-weight: 600;
+}
+
+.box-fixed {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 0px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.footer {
+    color: #353535;
+    line-height: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.box-workplace {
+    padding: 0;
+}
+
+.box-workplace .item {
+    padding: 0;
+}
+
+.box-workplace .item-top {
+    margin-bottom: 0px;
+}
+
+.box-workplace .flexbox {
+    padding: 12px 30rpx;
+}
+
+.status {
+    color: red;
+    margin-left: 20rpx;
+}
+
+.icon_circle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #c3cbd6;
+    border-radius: 50%;
+    top: 3px;
+}
+
+.icon_circle.icon_circle_2::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #3091f2;
+    border-radius: 50%;
+    top: 0px;
+    animation: fixed_ripple 1s ease infinite;
+}
+
+.txt {
+    height: 40px;
+    margin-left: 20px;
+}
+
+.item .txt-2 {
+    color: #353535;
+}
+
+.item .txt-3 {
+    color: #464c5b;
+}
+
+.icon_circle::after {
+    content: '';
+    width: 1px;
+    height: 28px;
+    position: absolute;
+    left: 4px;
+    top: 15px;
+    background: #c3cbd6;
+}
+
+.icon_circle_2,
+.icon_circle_2::after {
+    background: #3091f2;
+}
+
+.icon_circle_3,
+.icon_circle_3::after {
+    background: #3399ff;
+}
+
+.icon_circle.icon_no_after::after {
+    background: transparent;
+    width: 0px;
+    height: 0px;
+}
+
+.circle-img {
+    height: 60rpx;
+    width: 60rpx;
+    border-radius: 30rpx;
+}
+
+.color-text {
+    color: #09bb07;
+    margin-right: 5px;
+}
+
+.view-text text {
+    font-size: 28rpx;
+}
+
+.top_right {
+    float: right;
+}
+
+.loadmore {
+    font-size: 14px;
+    color: #09bb07;
+}

@@ -1,0 +1,16 @@
+<view>
+	<view class="box" wx:if="{{resume.honors.length>0}}">
+		<view wx:for="{{resume.honors}}" hover="true" hover-start-time="10" hover-stay-time="300"hover-class="click-view" bindtap='toEditHonor'  data-date='{{item.date}}' data-name="{{item.name}}" data-prize='{{item.prize}}' data-id="{{item.id}}" data-flag='true' data-resume_id='{{item.resume_id}}'>
+			<view class="item"> 
+				<view class="dateTop">{{item.date}}</view>
+				<view class="text-2">{{item.prize}}</view>
+				<view class="text-3">{{item.name}}</view>
+			</view>
+		</view>
+	</view>
+	<button type="primary" class="btn" bindtap='toEditHonor' data-flag='false'>添加更多教育经历</button>
+</view>
+
+<include src='../../../common/loader.wxml' />
+
+<include src='../../../common/toast.wxml' />

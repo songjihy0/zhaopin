@@ -1,0 +1,59 @@
+.r-content {
+    overflow: hidden;
+    position: relative;
+}
+
+.r-s-content {
+    overflow: hidden;
+}
+
+.ripple {
+    background-color: rgba(18, 150, 220, 0.15);
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+@-webkit-keyframes ripple {
+    100% {
+        -webkit-transform: scale(10);
+        transform: scale(10);
+    }
+}
+
+@keyframes ripple {
+    100% {
+        -webkit-transform: scale(10);
+        transform: scale(10);
+    }
+}
+
+@-webkit-keyframes ripple-reset {
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+}
+
+@keyframes ripple-reset {
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+}
+
+@keyframes fixed_ripple {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(3);
+        transform: scale(3);
+    }
+}

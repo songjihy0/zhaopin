@@ -1,0 +1,192 @@
+<view class='_relative searchBar'>
+    <view class="container-row _fixed searchBar">
+        <view class="work-place _nowrap _relative" bindtap="navigateTo" wx:if="{{!searched || showSuggestions}}" data-url='../workplace/workplace'>
+            <text class='_nowrap'>{{workplace.district || workplace.city}}</text>
+            <view class="arrows-down "></view>
+        </view>
+        <view class="search">
+            <view class="iconfont icon-search"></view>
+            <!-- <icon type="search" size="15" color="#b2b2b2" /> -->
+            <input type="text" class="search-input" placeholder="搜索职位/公司" placeholder-class="placeholder-class" focus bindconfirm="searchJob" bindfocus="showSuggestions" bindinput="keyInput" value="{{searchMsg}}" />
+        </view>
+        <view class="canclebox" wx:if="{{!searched || showSuggestions}}">
+            <button class="cancle _nowrap" bindtap="cancle" hover-start-time="10" hover-stay-time="200">取消</button>
+        </view>
+    </view>
+</view>
+<view class="container search-history animated bounceInUp" hidden="{{searchMsg!='' || searchHistory.length==0 || !showSuggestions}}">
+    <view>
+        <view class="placeicon-1"></view>
+        <text>历史搜索</text>
+        <text class="handle" bindtap='clearHis'>清除</text>
+    </view>
+    <view class="history-list">
+        <button class="history-item" hover-start-time="10" hover-stay-time="200" data-value="{{item}}" wx:for="{{searchHistory}}" wx:key="*this" bindtap="clickBtnSearch">{{item}}
+        </button>
+    </view>
+</view>
+<!-- <view class="container search-hot" hidden="{{searchMsg!='' || !showSuggestions}}">
+        <view>
+            <view class="placeicon-2"></view>
+            <text>热门搜索</text>
+            <text class="handle">换一批</text>
+        </view>
+        <view class="hot-list"> 
+            <button  class="hot-item" hover-start-time="10" hover-stay-time="200" data-value="{{item}}" wx:for="{{searchHot}}" wx:key="*this" bindtap="clickBtnSearch" >{{item}}
+            </button>   
+        </view>
+    </view> -->
+<!-- 搜索补全 -->
+<view class="searchComplement animated fadeInUp" hidden="{{searchSuggestions.length==0 || !showSuggestions}}">
+    <view class="complement-list">
+        <view wx:for="{{searchSuggestions}}" class='animated lightSpeedIn' style='animation-delay: {{index*0.2}}s;-webkit-animation-delay:{{index*0.2}}s '>
+            <view class="complement-item" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap="complementSearch" data-complement="{{item}}">
+                <view class="_line" data-complement="{{item}}">
+                    <icon type="search" size="15" color="#b2b2b2" data-complement="{{item}}" />
+                    <text data-complement="{{item}}">{{item}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 筛选bar -->
+<view class="handleBar _fixed" wx:if="{{searched && !showSuggestions}}">
+    <view class="handleItem" bindtap="handleAnimate" data-index="1">
+        <text style="color:{{active[0]}}" data-index="1">{{workplace.district || workplace.city}}</text>
+        <view class="arrows-down" style="border-top: 8rpx solid {{active[0]}};" data-index="1"></view>
+    </view>
+    <view class="handleItem" bindtap="handleAnimate" data-index="2">
+        <text style="color:{{active[1]}}" data-index="2">职位筛选</text>
+        <view class="arrows-down" style="border-top: 8rpx solid {{active[1]}};" data-index="2"></view>
+    </view>
+    <view class="handleItem" bindtap="handleAnimate" data-index="3">
+        <text style="color:{{active[2]}}" data-index="3">公司筛选</text>
+        <view class="arrows-down" style="border-top: 8rpx solid {{active[2]}};" data-index="3"></view>
+    </view>
+</view>
+<!-- style="height:{{handleHeight}}px;" -->
+<view class="handleArea" wx:if="{{searched && !showSuggestions}}">
+    <view class="itemArea itemArea-1" style="height:{{areaHeight-35}}px" hidden="{{hidden[0]}}" animation="{{animationData}}">
+        <view class="leftArea">
+            <text class="cidx-text">{{workplace.city}}</text>
+        </view>
+        <view class="rightArea">
+            <picker-view bindchange="changeDistrict" indicator-style="line-height:40px;height:40px;box-sizing:border-box;border-top:1px solid #888888;border-bottom: 1px solid #888888;">
+                <picker-view-column style="height:{{areaHeight-35}}px">
+                    <view class="cidx-text">{{workplace.city}}</view>
+                    <view class="cidx-text" wx:for="{{citycidx}}">{{item.fullname}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+        <view style="clear:both;"></view>
+        <view class="changeCity" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap="navigateTo" data-url='../workplace/workplace'>
+            <icon class="iconfont icon-change"></icon>
+            <text>切换城市</text>
+        </view>
+    </view>
+    <view class="itemArea itemArea-2" style="height:{{areaHeight}}px" hidden="{{hidden[1]}}" animation="{{animationData}}">
+        <view class="itemArea-item">
+            <view style="margin-bottom:10px;">
+                <text class="title">月薪范围</text>
+                <text class="title" style="color:#1aad19; margin-left:10px">({{salary.lower}} - {{salary.upper}}k)</text>
+            </view>
+            <view>
+                <text>最低月薪</text>
+                <slider min="1" max="{{salary.upper}}" value="{{salary.lower}}" show-value="true" bindchange="changeLower"></slider>
+            </view>
+            <view>
+                <text>最高月薪</text>
+                <slider min="{{salary.lower}}" max="50" value="{{salary.upper}}" show-value="true" bindchange="changeUpper"></slider>
+            </view>
+        </view>
+        <view class="itemArea-item">
+            <view style="margin-top:10px;">
+                <text class="title">学历要求</text>
+            </view>
+            <view class="btn-view">
+                <view class="lxCheckboxGroup">
+                    <view wx:for="{{items.educations}}" data-index="{{index}}" data-value="educations" size="20" bindtap="bindCheckbox">
+                        <icon type="{{item.type}}" size="20" />
+                        <text>{{item.text}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="itemArea-item">
+            <view style="margin-top:10px;">
+                <text class="title">工作性质</text>
+            </view>
+            <view class="btn-view">
+                <view class="lxCheckboxGroup">
+                    <view wx:for="{{items.types}}" data-index="{{index}}" data-value="types" size="20" bindtap="bindCheckbox">
+                        <icon type="{{item.type}}" size="20" />
+                        <text>{{item.text}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="itemArea itemArea-3" style="min-height:{{areaHeight}}px" hidden="{{hidden[2]}}" animation="{{animationData}}">
+        <view class="itemArea-item">
+            <view>
+                <text class="title">融资阶段</text>
+            </view>
+            <view class="btn-view">
+                <view class="lxCheckboxGroup">
+                    <view wx:for="{{items.financle}}" data-index="{{index}}" data-value="financle" bindtap="bindCheckbox" class="checkbox-item {{item.type}}">
+                        {{item.text}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="itemArea-item">
+            <view>
+                <text class="title">行业领域</text>
+            </view>
+            <view class="btn-view">
+                <view class="lxCheckboxGroup">
+                    <view wx:for="{{items.industry}}" data-index="{{index}}" data-value="industry" size="18" bindtap="bindCheckbox" class="checkbox-item {{item.type}}">
+                        {{item.text}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="shade" hidden="{{!hidden[0]&&!hidden[1]&&!hidden[2]}}" style="height:{{handleHeight}}px;background:rgba(0,0,0,0.2)" bindtap="hideHandle"></view>
+</view>
+<scroll-view scroll-y style="height:{{windowHeight-48-38}}px" wx:if="{{searched && !showSuggestions}}" class="jobList" lower-threshold='20' bindscrolltolower='loadMore'>
+    <view class='list'>
+        <view class="item animated fadeInRight" hover="true" hover-start-time="10" hover-stay-time="300" hover-class="click-view" bindtap="navigateTo" wx:for='{{jobList}}' data-url='../jobDetail/jobDetail?id={{item.id}}' data-id='{{item.id}}' style='animation-delay:{{index%limitCount*0.2}}s;-webkit-animation-delay:{{index%limitCount*0.2}}s'>
+            <view class="logo">
+                <image src="{{item.company.logo || '../../images/avatar.png'}}" style="height:120rpx;width:120rpx;" background-size="cover"></image>
+            </view>
+            <view class="details">
+                <view style='height: 45rpx;'>
+                    <text class="job-title" style='height: 45rpx;'>{{item.name}}</text>
+                    <text class="job-salary" style='height: 45rpx;'>{{item.salary_lower}}-{{item.salary_upper}}k</text>
+                </view>
+                <view class="company-name" style='height: 40rpx;'>{{item.company.c_name_short}}</view>
+                <view class="_block translucence-msg" style="height:40rpx;margin-top:10rpx">
+                    <text class="work-place">{{item.city}}</text>
+                    <text class="district">{{item.district}}</text>
+                    <text class="degree">{{item.degree_limit}}</text>
+                    <text class="_right release-date">{{item.release_date}}</text>
+                </view>
+                <view class="_block translucence-msg" style="height:40rpx;margin-top:6rpx">
+                    <text class="">{{item.company.financing_stage}}</text>
+                    <text class="scale">{{item.company.scale}}</text>
+                    <text class="company-type">{{item.company.field}}</text>
+                </view>
+            </view>
+            <view style="clear:both;"></view>
+        </view>
+    </view>
+    <view class='nomore' wx:if='{{searched && dataLimit && !showSuggestions && jobList.length>5}}'>
+        <!-- <image src='../../images/nomore.png' class='img-nomore'></image> -->
+        <view class='iconfont icon-meiyougengduoliao icon-nomore'></view>
+        <text>没有更多了~</text>
+    </view>
+</scroll-view>
+<image wx:if='{{jobList.length==0 && !showSuggestions}}' src='../../images/empty.png' class='empty'></image>
+<include src='../../common/loader.wxml' />
+<include src='../../common/toast.wxml' />

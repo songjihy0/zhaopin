@@ -1,0 +1,7 @@
+<view class="message">
+    <view class="message-notice ">
+        <view class="toast-con animate-toast toast" wx:if='{{showToast}}'>       	
+            <view>{{content}}</view>
+        </view>
+    </view>
+</view>
